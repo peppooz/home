@@ -102,47 +102,41 @@ class Effect {
         this.gap = window.innerWidth / 90;
         this.mouse = {
             radius: 15000,
-            x: 0,
-            y: 0
+            x: -9999,
+            y: -9999
         }
         window.addEventListener('mousemove', e => {
             this.mouse.x = e.clientX * window.devicePixelRatio;
             this.mouse.y = e.clientY * window.devicePixelRatio;
         })
 
-        window.addEventListener('mousemove', e => {
-    this.mouse.x = e.clientX * window.devicePixelRatio;
-    this.mouse.y = e.clientY * window.devicePixelRatio;
-});
+        window.addEventListener('mouseleave', () => {
+          this.mouse.x = -9999;
+          this.mouse.y = -9999;
+      });
 
-// Hide particles when leaving screen with mouse
-window.addEventListener('mouseleave', () => {
-    this.mouse.x = -9999;
-    this.mouse.y = -9999;
-});
+      // TOUCH support
+      canvas.addEventListener('touchstart', e => {
+          const touch = e.touches[0];
+          this.mouse.x = touch.clientX * window.devicePixelRatio;
+          this.mouse.y = touch.clientY * window.devicePixelRatio;
+      }, { passive: true });
 
-// Touch support
-canvas.addEventListener('touchstart', e => {
-    const touch = e.touches[0];
-    this.mouse.x = touch.clientX * window.devicePixelRatio;
-    this.mouse.y = touch.clientY * window.devicePixelRatio;
-}, { passive: true });
+      canvas.addEventListener('touchmove', e => {
+          const touch = e.touches[0];
+          this.mouse.x = touch.clientX * window.devicePixelRatio;
+          this.mouse.y = touch.clientY * window.devicePixelRatio;
+      }, { passive: true });
 
-canvas.addEventListener('touchmove', e => {
-    const touch = e.touches[0];
-    this.mouse.x = touch.clientX * window.devicePixelRatio;
-    this.mouse.y = touch.clientY * window.devicePixelRatio;
-}, { passive: true });
+      canvas.addEventListener('touchend', () => {
+          this.mouse.x = -9999;
+          this.mouse.y = -9999;
+      }, { passive: true });
 
-canvas.addEventListener('touchend', e => {
-    this.mouse.x = -9999;
-    this.mouse.y = -9999;
-}, { passive: true });
-
-canvas.addEventListener('touchcancel', e => {
-    this.mouse.x = -9999;
-    this.mouse.y = -9999;
-}, { passive: true });
+      canvas.addEventListener('touchcancel', () => {
+          this.mouse.x = -9999;
+          this.mouse.y = -9999;
+      }, { passive: true });
 
  window.addEventListener('resize', () => {
             canvas.width = window.innerWidth * window.devicePixelRatio;
@@ -151,7 +145,6 @@ canvas.addEventListener('touchcancel', e => {
             this.height = canvas.height
             canvas.style.width = `${window.innerWidth}px`;
             canvas.style.height = `${window.innerHeight}px`;
-
             this.particlesArray = [];
             this.init();
         })

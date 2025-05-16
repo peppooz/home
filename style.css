@@ -7,7 +7,7 @@
 html, body{
     background-color: black;
     height: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
     position: relative;
     line-height: 1;
 }
@@ -52,8 +52,10 @@ html, body{
 }
 
 canvas{
+    display: block;
     position: fixed;
     pointer-events: none;
+    touch-action: none;
     top: 0;
     left: 0;
     width: 100%;
