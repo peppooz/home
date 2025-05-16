@@ -52,7 +52,6 @@ html, body{
 }
 
 canvas{
-    display: block;
     position: fixed;
     pointer-events: none;
     touch-action: none;

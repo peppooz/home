@@ -40,7 +40,7 @@ class Paricle{
         this.vx = 0;
         this.vy = 0;
         this.ease = 0.04;
-        this.friction = 0.06;
+        this.friction = 0.08;
         this.dx = 0;
         this.dy = 0;
         this.distance = 0;
@@ -99,11 +99,11 @@ class Effect {
         this.height = height;
         this.ctx = context;
       this.particlesArray = [];
-        this.gap = window.innerWidth / 90;
+        this.gap = window.innerWidth / 120;
         this.mouse = {
             radius: 15000,
-            x: -9999,
-            y: -9999
+            x: 0,
+            y: 0
         }
         window.addEventListener('mousemove', e => {
             this.mouse.x = e.clientX * window.devicePixelRatio;
@@ -115,28 +115,26 @@ class Effect {
           this.mouse.y = -9999;
       });
 
-      // TOUCH support
-      canvas.addEventListener('touchstart', e => {
-          const touch = e.touches[0];
-          this.mouse.x = touch.clientX * window.devicePixelRatio;
-          this.mouse.y = touch.clientY * window.devicePixelRatio;
-      }, { passive: true });
+      // Add touch event listeners for mobile
+ window.addEventListener('touchstart', e => {
+     if (e.touches.length > 0) {
+         this.mouse.x = e.touches[0].clientX * window.devicePixelRatio;
+         this.mouse.y = e.touches[0].clientY * window.devicePixelRatio;
+     }
+ });
 
-      canvas.addEventListener('touchmove', e => {
-          const touch = e.touches[0];
-          this.mouse.x = touch.clientX * window.devicePixelRatio;
-          this.mouse.y = touch.clientY * window.devicePixelRatio;
-      }, { passive: true });
+ window.addEventListener('touchmove', e => {
+     if (e.touches.length > 0) {
+         this.mouse.x = e.touches[0].clientX * window.devicePixelRatio;
+         this.mouse.y = e.touches[0].clientY * window.devicePixelRatio;
+     }
+ });
 
-      canvas.addEventListener('touchend', () => {
-          this.mouse.x = -9999;
-          this.mouse.y = -9999;
-      }, { passive: true });
-
-      canvas.addEventListener('touchcancel', () => {
-          this.mouse.x = -9999;
-          this.mouse.y = -9999;
-      }, { passive: true });
+ window.addEventListener('touchend', () => {
+     // Optional: Reset mouse position when touch ends
+     this.mouse.x = -9999;
+     this.mouse.y = -9999;
+ });
 
  window.addEventListener('resize', () => {
             canvas.width = window.innerWidth * window.devicePixelRatio;
