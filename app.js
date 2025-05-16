@@ -110,6 +110,40 @@ class Effect {
             this.mouse.y = e.clientY * window.devicePixelRatio;
         })
 
+        window.addEventListener('mousemove', e => {
+    this.mouse.x = e.clientX * window.devicePixelRatio;
+    this.mouse.y = e.clientY * window.devicePixelRatio;
+});
+
+// Hide particles when leaving screen with mouse
+window.addEventListener('mouseleave', () => {
+    this.mouse.x = -9999;
+    this.mouse.y = -9999;
+});
+
+// Touch support
+canvas.addEventListener('touchstart', e => {
+    const touch = e.touches[0];
+    this.mouse.x = touch.clientX * window.devicePixelRatio;
+    this.mouse.y = touch.clientY * window.devicePixelRatio;
+}, { passive: true });
+
+canvas.addEventListener('touchmove', e => {
+    const touch = e.touches[0];
+    this.mouse.x = touch.clientX * window.devicePixelRatio;
+    this.mouse.y = touch.clientY * window.devicePixelRatio;
+}, { passive: true });
+
+canvas.addEventListener('touchend', e => {
+    this.mouse.x = -9999;
+    this.mouse.y = -9999;
+}, { passive: true });
+
+canvas.addEventListener('touchcancel', e => {
+    this.mouse.x = -9999;
+    this.mouse.y = -9999;
+}, { passive: true });
+
  window.addEventListener('resize', () => {
             canvas.width = window.innerWidth * window.devicePixelRatio;
             canvas.height = window.innerHeight * window.devicePixelRatio;
