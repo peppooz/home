@@ -1,0 +1,234 @@
+*{
+    font-family: 'Courier New', monospace;
+    font-weight: 400;
+    text-shadow: 0 0 10px floralwhite;
+}
+
+html, body{
+    background-color: black;
+    height: 100%;
+    overflow-x: hidden;
+    position: relative;
+    line-height: 1;
+}
+
+/* Loading Screen */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.loading-bar-container {
+  width: 200px;
+  height: 10px;
+  border: 1px solid floralwhite;
+  border-radius: 5px;
+  padding: 1px;
+}
+
+.loading-bar {
+  height: 100%;
+  width: 0%;
+  background-color: palegoldenrod;
+  animation: load 2s linear forwards;
+  border-radius: 3px;
+}
+
+.loading-text {
+    color: floralwhite;
+    font-size: 24px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px floralwhite;
+}
+
+canvas{
+    position: fixed;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Main Content */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 48px;
+    color: palegoldenrod;
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+    margin-top: 25px;
+    margin-left: 40px;
+    text-shadow: 0 0 10px palegoldenrod;
+}
+
+.tagline {
+  padding-left: 10em;
+    font-size: 18px;
+    color: #aaa;
+    margin-bottom: 40px;
+}
+
+/* Navigation */
+nav {
+    margin: 20px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 2em 0;
+}
+
+nav a {
+    color: palegoldenrod;
+    border-bottom: 1px solid floralwhite;
+    transition: all 0.3s;
+}
+
+nav a:hover {
+    color: black;
+    background-color: floralwhite;
+    border-radius: 4px;
+    padding-top: 28px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 5px;
+}
+
+.icon{
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+  object-fit: contain;
+}
+
+.icon:hover{
+  transform: scale(1.2);
+}
+
+/* Content Sections */
+section {
+    margin-bottom: 20px;
+    margin-left: 200px;
+    margin-right: 200px
+}
+
+section h2 {
+    color: palegoldenrod;
+    font-size: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+}
+
+/* Music Player */
+.track {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.track-info {
+    flex-grow: 1;
+}
+
+.track-title {
+    color: palegoldenrod;
+    font-size: 16px;
+}
+
+.track-duration {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.play-btn {
+    background: none;
+    color: palegoldenrod;
+    border: 1px solid palegoldenrod;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+    margin-left: 15px;
+    font-family: 'Courier New', monospace;
+    transition: all 0.3s;
+}
+
+.play-btn:hover {
+    background-color: palegoldenrod;
+    color: black;
+}
+
+footer {
+    margin-top: auto;
+    padding: 1em;
+    text-align: bottom;
+    padding: 10px 0 0px;
+    color: #aaa;
+    text-shadow: 0 0 10px floralwhite;
+    border-top: 1px solid #333;
+    font-size: 12px;
+}
+
+/* CRT Scanline Effect */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+                  rgba(0, 0, 0, 0.25) 50%),
+              linear-gradient(90deg,
+                  rgba(255, 0, 0, 0.06),
+                  rgba(0, 255, 0, 0.02),
+                  rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    pointer-events: none;
+    background-size: 100% 2px, 3px 100%;
+    opacity: 0.5;
+}
+
+/*.hero {
+    position: relative;
+    height: calc(100svh - 60px);
+}
+
+.hero h1{
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem
+}
+*/
