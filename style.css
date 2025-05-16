@@ -7,7 +7,7 @@
 html, body{
     background-color: black;
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
     position: relative;
     line-height: 1;
 }
