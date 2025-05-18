@@ -102,8 +102,8 @@ class Effect {
         this.gap = window.innerWidth / 120;
         this.mouse = {
             radius: 15000,
-            x: 0,
-            y: 0
+            x: -9999,
+            y: -9999
         }
         window.addEventListener('mousemove', e => {
             this.mouse.x = e.clientX * window.devicePixelRatio;
