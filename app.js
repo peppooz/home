@@ -99,7 +99,7 @@ class Effect {
         this.height = height;
         this.ctx = context;
       this.particlesArray = [];
-        this.gap = window.innerWidth / 120;
+        this.gap = 20;
         this.mouse = {
             radius: 15000,
             x: -9999,
